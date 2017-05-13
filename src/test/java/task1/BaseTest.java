@@ -82,7 +82,7 @@ public abstract class BaseTest {
     @DataProvider(name = "logIn")
     public Object[][] getData() {
 
-        return new Object[][]{{"webinar.test@gmail.com", "Xcg7299bnSmMuRLp9ITw"}};
+        return new Object[][]{{"tomsmith", "SuperSecretPassword!"}};
 
 
     }

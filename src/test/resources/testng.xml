@@ -3,14 +3,14 @@
 
 <suite name="Products Management" verbose="1" >
 
-    <test name="Create New Product [Chrome]" >
+    <test name="Auth [Chrome]" >
         <parameter name="browser" value="chrome"></parameter>
         <classes>
-        <class name="home4.tests.CreateProductTest"></class>
+        <class name="task1.tests.Auth"></class>
         </classes>
 
 
-
+</test>
 
 
 </suite>

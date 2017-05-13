@@ -20,18 +20,12 @@ public class GeneralActions {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    private By form =  By.cssSelector(".nav-item");
-
-    private  By loginId = By.cssSelector("#email");
-    private By password =  By.cssSelector("#password");
-
-
-    private  By submit = By.cssSelector("#login_form [name=submitLogin]");
-
-
-
-
-
+    private By formAuth =  By.cssSelector("li a");
+    private By form =  By.cssSelector("form[name=login]");
+    private  By loginId = By.cssSelector("input[name=username]");
+    private By password =  By.cssSelector("input[name=password]");
+    private  By submit = By.cssSelector(".radius i");
+    private  By success = By.cssSelector(".flash.success");
 
 
     public GeneralActions(WebDriver driver) {
@@ -45,27 +39,25 @@ public class GeneralActions {
 
        driver.navigate().to(Properties.getBaseUrl());
 
-
-        List<WebElement> elementList = driver.findElements(this.form);
-
+        List<WebElement> list = driver.findElements(this.formAuth);
+        WebElement formAuth = list.get(17);
 
         JavascriptExecutor js= (JavascriptExecutor)driver;
         js.executeScript("arguments[0].scrollIntoView();"
-                ,allProducts);
+                ,formAuth);
 
-        allProducts.click();
-
-
+        formAuth.click();
+        waitForContentLoad(form);
 
         WebElement loginId = driver.findElement(this.loginId);
-        WebElement password = driver.findElement(this.password);
+        WebElement passwd = driver.findElement(this.password);
         loginId.sendKeys(login);
-        password.sendKeys(password);
+        passwd.sendKeys(password);
 
-        WebElement submit = driver.findElement(this.sub);
+        WebElement submit = driver.findElement(this.submit);
         submit.click();
 
-        waitForContentLoad(this.main);
+        waitForContentLoad(success);
 
         getscreenshot();
 
